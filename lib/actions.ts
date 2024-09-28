@@ -36,3 +36,16 @@ export async function addQuestion(question: FormData) {
       throw new Error("Failed to add question.");
     }
   }
+
+// handles the voting ability by clicking the thumbs up button
+import { incrementVotes } from "./data";
+
+export async function addVote(data: FormData) {
+    try {
+      incrementVotes(data.get("id") as string);
+      revalidatePath("/ui/topics/[id]", "page");
+    } catch (error) {
+      console.error("Database Error:", error);
+      throw new Error("Failed to add vote.");
+    }
+  }
