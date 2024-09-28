@@ -1,12 +1,17 @@
+import { fetchTopics } from "@/lib/data";
 import TopicLink from "./TopicLink";
 
-const topics = [
-  { id: "1", title: "C#" },
-  { id: "2", title: "Python" },
-  { id: "3", title: "Golang" },
-];
+// const topics = [
+//   { id: "1", title: "C#" },
+//   { id: "2", title: "Python" },
+//   { id: "3", title: "Golang" },
+// ];
 
 export default async function TopicLinks() {
+
+  //fetch topics data from data.tsx
+  const topics = await fetchTopics();
+  
   return (
     <>
       {topics.map((topic) => {
